@@ -13,14 +13,16 @@ class App extends Component {
     return (
       <div>
         <NavigationBar />
-        <Switch>
-          <Route path="/">
-            <Table />
-          </Route>
-          <Route path="/hi">
-            <div>Hi!</div>
-          </Route>
-        </Switch>
+        <Router>
+          <Switch>
+            <Route path="/">
+              <Table />
+            </Route>
+            <Route path="/hi">
+              <div>Hi!</div>
+            </Route>
+          </Switch>
+        </Router>
       </div>
     );
   }
