@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import Link from '@material-ui/core/Link';
 
 const columns = [
   { id: 'number', label: 'No.', minWidth: 10 },
@@ -43,6 +44,7 @@ const rows = [
   createData(8 , '부스트캠프 스타트', '관리자', '20-08-07'),
   createData(9 , '부스트캠프 스타트', '관리자', '20-08-07'),
   createData(10 , '부스트캠프 스타트', '관리자', '20-08-07'),
+  createData(11 , '부스트캠프 스타트', '관리자', '20-08-07'),
 ];
 
 const useStyles = makeStyles({
@@ -55,6 +57,8 @@ export default function StickyHeadTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  
+  const preventDefault = (event) => event.preventDefault();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -85,13 +89,13 @@ export default function StickyHeadTable() {
           <TableBody>
             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow hover role="checkbox" tabIndex={-1} key={row.code} >
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
-                      </TableCell>
+                            <TableCell key={column.id} align={column.align}>
+                                {column.id === 'title' ? <Link href="#" onClick={preventDefault}>{value}</Link> : value}
+                            </TableCell>
                     );
                   })}
                 </TableRow>
