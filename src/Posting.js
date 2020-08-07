@@ -25,7 +25,7 @@ export default function App() {
       <h1>Create Account</h1>
       <label>
       <div>
-        제목:
+        <p>제목:</p>
         <input
           name="title"
           type="title"
@@ -37,7 +37,7 @@ export default function App() {
 
       <label>
         <div>
-        글쓴이:
+        <p>글쓴이:</p>
         <input
           name="author"
           type="author"
@@ -49,12 +49,12 @@ export default function App() {
 
       <label>
         <div>
-        내용:
-        <input
+        <p>내용:</p>
+        <textarea // 나중에 서머노트로 구현해주세요. 죄송합니다...
           name="content"
-          type="content"
+          type="textarea"
           value={content}
-          onChange={e => setAuthor(e.target.value)}
+          onChange={e => setContent(e.target.value)}
           required />
         <p>Don't use bad words</p>
         </div>
