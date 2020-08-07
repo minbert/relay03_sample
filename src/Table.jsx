@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 
 const columns = [
   { id: 'number', label: 'No.', minWidth: 10 },
@@ -57,8 +57,6 @@ export default function StickyHeadTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  
-  const preventDefault = (event) => event.preventDefault();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -94,7 +92,7 @@ export default function StickyHeadTable() {
                     const value = row[column.id];
                     return (
                             <TableCell key={column.id} align={column.align}>
-                                {column.id === 'title' ? <Link href="#" onClick={preventDefault}>{value}</Link> : value}
+                                {column.id === 'title' ? <Link to="/hi">{value}</Link> : value}
                             </TableCell>
                     );
                   })}

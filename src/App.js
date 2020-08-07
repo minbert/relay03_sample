@@ -11,19 +11,17 @@ import {
 class App extends Component {
   render(){
     return (
-      <div>
+      <Router>
         <NavigationBar />
-        <Router>
-          <Switch>
-            <Route path="/">
-              <Table />
-            </Route>
-            <Route path="/hi">
-              <div>Hi!</div>
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+        <Switch>
+          <Route path="/hi">
+            <div>Hi!</div>
+          </Route>
+          <Route path="/">
+            <Table />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
