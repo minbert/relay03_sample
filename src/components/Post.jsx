@@ -8,7 +8,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { Link } from 'react-router-dom';
+import { 
+  Link, 
+  BrowserRouter as Router,
+  Switch,
+  Route
+ } from 'react-router-dom';
 
 const columns = [
   { id: "number", label: "No.", minWidth: 10 },
@@ -29,6 +34,8 @@ const columns = [
   },
 ];
 
+
+// !fixme: api call here!!
 const response = {
   data:{
     "board_id":1, // 게시판 id(tab 번호)
@@ -36,17 +43,8 @@ const response = {
       "post_id": 1,
       "title": "Boostcamp에 오신 것을 환영합니다",
       "author": "김계란",
+      "content": "가짜 사나이 ep1. ",
       "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 32분"
-    },{
-      "post_id": 2,
-      "title": "Boostcamp에 오신 것을 환영하지 않습니다",
-      "author": "김지옥",
-      "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 30분
-    },{
-      "post_id": 10,
-      "title": "Boostcamp에 오실까요?",
-      "author": "김계란",
-      "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 25분
     }]
   } 
 }
@@ -57,7 +55,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable(props) {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -71,38 +69,28 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
+
+  // !fixme: api call here!!
+  // const componentDidUpdate = () => { }
+
+  const { title, author, content, date } = response.data.post[0]
+  console.log(title)
   return (
     <Paper className={classes.root}>
       <TableContainer>
+        {console.log("Post?")}
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
+          <TableHead />
+          
           <TableBody>
-            {response["data"]["post"].slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-              return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code} >
-                  {columns.map((column) => {
-                    const value = row[column.id];
-                    return (
-                        <TableCell key={column.id} align={column.align}>
-                            {column.id === 'title' ? <Link to={`/board/${row.post_id}`}>{value}</Link> : value}
-                        </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
+            <TableRow hover role="checkbox" tabIndex={-1}>
+              <TableCell>
+                  <div key={title}>{title}</div>
+                  <div key={author}>{author}</div>
+                  <div>{content}</div>
+                  <div key={date}>{date}</div>
+              </TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
