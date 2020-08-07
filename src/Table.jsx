@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { Link } from 'react-router-dom';
 
 const columns = [
-  { id: "number", label: "No.", minWidth: 10 },
+  { id: "post_id", label: "No.", minWidth: 10 },
   { id: "title", label: "Title", minWidth: 200 },
   {
     id: "author",
@@ -33,7 +33,7 @@ function createData(number, title, author, date) {
   return { number, title, author, date };
 }
 
-async function showAvatar() {
+/*async function showAvatar() {
 
   // read our JSON
   let response = await fetch(' http://localhost:8080/board?id=1&page=0');
@@ -42,7 +42,7 @@ async function showAvatar() {
   await new Promise((resolve, reject) => setTimeout(resolve, 3000));
 
   return githubUser;
-}
+}*/
 
 const getSecondUser = async () => {
   const url = 'http://localhost:8080/board?id=1&page=0';
