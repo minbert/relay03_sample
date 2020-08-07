@@ -33,6 +33,23 @@ function createData(number, title, author, date) {
   return { number, title, author, date };
 }
 
+async function showAvatar() {
+
+  // read our JSON
+  let response = await fetch(' http://localhost:8080/board?id=1&page=0');
+
+  // wait 3 seconds
+  await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+
+  return githubUser;
+}
+
+const getSecondUser = async () => {
+  const url = 'http://localhost:8080/board?id=1&page=0';
+  const response = await fetch(url);
+  return response.json();
+}
+
 
 const response = {
   data:{
