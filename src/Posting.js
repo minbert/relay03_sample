@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
 
 export default function App() {
   const [title, setTitle] = React.useState("");
@@ -54,7 +49,7 @@ export default function App() {
           name="content"
           type="content"
           value={content}
-          onChange={e => setAuthor(e.target.value)}
+          onChange={e => setContent(e.target.value)}
           required />
         <p>Don't use bad words</p>
         </div>
