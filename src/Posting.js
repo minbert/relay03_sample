@@ -6,17 +6,15 @@ import {
 } from "react-router-dom";
 
 export default function App() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
+  const [title, setTitle] = React.useState("");
+  const [author, setAuthor] = React.useState("");
+  const [content, setContent] = React.useState("");
 
   const handleSubmit = (event) => {
     console.log(`
-      Email: ${email}
-      Password: ${password}
-      Country: ${country}
-      Accepted Terms: ${acceptedTerms}
+      title: ${title}
+      author: ${author}
+      Accepted Terms: ${content}
     `);
 
     event.preventDefault();
@@ -25,34 +23,41 @@ export default function App() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Create Account</h1>
-
       <label>
-        Email:
+      <div>
+        제목:
         <input
-          name="email"
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          name="title"
+          type="title"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
           required />
+      </div>
       </label>
 
       <label>
-        Password:
+        <div>
+        글쓴이:
         <input
-          name="password"
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
+          name="author"
+          type="author"
+          value={author}
+          onChange={e => setAuthor(e.target.value)}
           required />
+          </div>
       </label>
 
       <label>
+        <div>
+        내용:
         <input
-          name="acceptedTerms"
-          type="checkbox"
-          onChange={e => setAcceptedTerms(e.target.value)}
+          name="content"
+          type="content"
+          value={content}
+          onChange={e => setAuthor(e.target.value)}
           required />
-        I accept the terms of service
+        <p>Don't use bad words</p>
+        </div>
       </label>
 
       <button>Submit</button>
