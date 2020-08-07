@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
 import Table from './Table';
+import Posting from './Posting';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +14,9 @@ class App extends Component {
       <Router>
         <NavigationBar />
         <Switch>
+          <Route path="/writing_post">
+            <Posting />
+          </Route>
           <Route path="/hi">
             <div>a</div>
           </Route>
