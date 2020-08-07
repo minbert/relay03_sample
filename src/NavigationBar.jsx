@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 export default function NavigationBar() {
   const classes = useStyles();
 
@@ -35,7 +36,7 @@ export default function NavigationBar() {
           <Button color="inherit" className={classes.menu}>인물</Button>
           <Button color="inherit" className={classes.menu}>운동</Button>
           <div className={classes.empty}></div>
-          <Button color="inherit" >글쓰기</Button>
+          <Button color="inherit" href="/writing_post">글쓰기</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
