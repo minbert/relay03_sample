@@ -31,7 +31,7 @@ export default function NavigationBar() {
           <Typography variant="h6" className={classes.title}>
             부캠 나우
           </Typography>
-          <Button color="inherit" className={classes.menu}>자유게시판</Button>
+          <Button color="inherit" className={classes.menu} href="/">자유게시판</Button>
           <Button color="inherit" className={classes.menu}>동물</Button>
           <Button color="inherit" className={classes.menu}>인물</Button>
           <Button color="inherit" className={classes.menu}>운동</Button>
