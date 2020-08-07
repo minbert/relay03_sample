@@ -11,21 +11,21 @@ import TableRow from '@material-ui/core/TableRow';
 import { Link } from 'react-router-dom';
 
 const columns = [
-  { id: 'number', label: 'No.', minWidth: 10 },
-  { id: 'title', label: 'Title', minWidth: 200 },
+  { id: "number", label: "No.", minWidth: 10 },
+  { id: "title", label: "Title", minWidth: 200 },
   {
-    id: 'author',
-    label: 'Author',
+    id: "author",
+    label: "Author",
     minWidth: 20,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: 'date',
-    label: 'Date',
+    id: "date",
+    label: "Date",
     minWidth: 30,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "right",
+    format: (value) => value.toLocaleString("en-US"),
   },
 ];
 
@@ -33,23 +33,49 @@ function createData(number, title, author, date) {
   return { number, title, author, date };
 }
 
-const rows = [
-  createData(1 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(2 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(3 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(4 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(5 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(6 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(7 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(8 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(9 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(10 , '부스트캠프 스타트', '관리자', '20-08-07'),
-  createData(11 , '부스트캠프 스타트', '관리자', '20-08-07'),
-];
+async function showAvatar() {
+
+  // read our JSON
+  let response = await fetch(' http://localhost:8080/board?id=1&page=0');
+
+  // wait 3 seconds
+  await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+
+  return githubUser;
+}
+
+const getSecondUser = async () => {
+  const url = 'http://localhost:8080/board?id=1&page=0';
+  const response = await fetch(url);
+  return response.json();
+}
+
+
+const response = {
+  data:{
+    "board_id":1, // 게시판 id(tab 번호)
+    "post":[{
+      "post_id": 1,
+      "title": "Boostcamp에 오신 것을 환영합니다",
+      "author": "김계란",
+      "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 32분"
+    },{
+      "post_id": 2,
+      "title": "Boostcamp에 오신 것을 환영하지 않습니다",
+      "author": "김지옥",
+      "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 30분
+    },{
+      "post_id": 10,
+      "title": "Boostcamp에 오실까요?",
+      "author": "김계란",
+      "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 25분
+    }]
+  }
+}
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: "100%",
   },
 });
 
@@ -85,7 +111,7 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {response["data"]["post"].slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code} >
                   {columns.map((column) => {
@@ -105,7 +131,7 @@ export default function StickyHeadTable() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={response["data"]["post"].length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
