@@ -1,13 +1,14 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
+import { Link } from 'react-router-dom';
 
 const columns = [
   { id: "number", label: "No.", minWidth: 10 },
@@ -32,6 +33,7 @@ function createData(number, title, author, date) {
   return { number, title, author, date };
 }
 
+
 const response = {
   data:{
     "board_id":1, // 게시판 id(tab 번호)
@@ -52,7 +54,7 @@ const response = {
       "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 25분
     }]
   }
-} 
+}
 
 const useStyles = makeStyles({
   root: {
@@ -94,13 +96,13 @@ export default function StickyHeadTable() {
           <TableBody>
             {response["data"]["post"].slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow hover role="checkbox" tabIndex={-1} key={row.code} >
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === "number" ? column.format(value) : value}
-                      </TableCell>
+                            <TableCell key={column.id} align={column.align}>
+                                {column.id === 'title' ? <Link to="/hi">{value}</Link> : value}
+                            </TableCell>
                     );
                   })}
                 </TableRow>
