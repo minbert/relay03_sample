@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
 import Table from './Table';
 import Posting from './Posting';
+import Post from './components/Post';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +15,7 @@ class App extends Component {
       <Router>
         <NavigationBar />
         <Switch>
+          <Route path="/board" component={Post} />
           <Route path="/writing_post">
             <Posting />
           </Route>

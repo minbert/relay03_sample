@@ -29,23 +29,6 @@ const columns = [
   },
 ];
 
-/*
-function createData(number, title, author, date) {
-  return { number, title, author, date };
-}
-
-// response를 실제로 적용할 때
-/*
-const getResponse = async () => {
-  const url = 'http://localhost:8080/board?id=1&page=0';
-  const response = await fetch(url);
-  return response.json();
-}
-
-const response = getResponse();
-*/
-
-
 const response = {
   data:{
     "board_id":1, // 게시판 id(tab 번호)
@@ -65,7 +48,7 @@ const response = {
       "author": "김계란",
       "date": "2020-08-27-15-32" // 2020년 8월 27일 15시 25분
     }]
-  }
+  } 
 }
 
 const useStyles = makeStyles({
@@ -112,9 +95,9 @@ export default function StickyHeadTable() {
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                            <TableCell key={column.id} align={column.align}>
-                                {column.id === 'title' ? <Link to="/hi">{value}</Link> : value}
-                            </TableCell>
+                        <TableCell key={column.id} align={column.align}>
+                            {column.id === 'title' ? <Link to={`/board/${row.post_id}`}>{value}</Link> : value}
+                        </TableCell>
                     );
                   })}
                 </TableRow>
