@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
 import Table from './Table';
 import Posting from './Posting';
-import Post from './components/Post';
+import Post from './Post';
 import {
   BrowserRouter as Router,
   Switch,
