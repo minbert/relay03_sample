@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import Footer from './Footer';
 import { Link } from 'react-router-dom';
 
 const columns = [
@@ -72,6 +73,7 @@ export default function StickyHeadTable() {
   };
 
   return (
+    <>
     <Paper className={classes.root}>
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
@@ -116,5 +118,7 @@ export default function StickyHeadTable() {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
+    <Footer />
+    </>
   );
 }

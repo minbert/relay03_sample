@@ -3,7 +3,6 @@ import Box from '@material-ui/core/Box';
 import { CssBaseline } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
 const response = {
     data:{
       "board_id":1, // 게시판 id(tab 번호)
